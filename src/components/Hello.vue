@@ -7,9 +7,9 @@
       </li>
     </ul>
   
-    <div>
-      <p v-if="isConnected">We're connected to the server!</p>
-      <p v-if="!isConnected">We're NOT connected to the server!</p>
+    <div class="domusto__status">
+      <p v-if="isConnected">Connected to DOMUSTO server, waiting for first data</p>
+      <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
 
     <pre>{{socketMessage}}</pre>
@@ -19,7 +19,7 @@
 
 <script>
 
-import Temperature from '@/components/Temperature';
+import Temperature from '@/theme/domusto/widgets/Temperature';
 
 // let socket = io.connect('http://192.168.178.72:3000/', { reconnect: true });
 // socket.on('stream', (data) => {
@@ -30,8 +30,6 @@ import Temperature from '@/components/Temperature';
 export default {
   name: 'hello',
   data: () => ({
-    sensorData: [{ a: 1 }, { b: 2 }],
-    // sensorData: 'Connecting to server...',
     socketMessage: null,
     isConnected: false,
     msg: 'Welcome to Your Vue.js App',
@@ -69,5 +67,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.domusto__status {
+  text-align: center;
+}
 
+ul {
+  list-style: none;
+}
 </style>
