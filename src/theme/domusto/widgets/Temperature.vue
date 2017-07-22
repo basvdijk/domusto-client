@@ -3,7 +3,7 @@
   <div class="widget widget--th">
     <div class="widget__header">{{ sensor.device.name }}</div>
     <div class="widget__label">
-      <span class="widget__label--temperature">{{ sensor.data.temperature }} &deg;C</span>
+      <span class="widget__label--temperature">{{ round(sensor.data.temperature, 1) }} &deg;C</span>
        / 
       <span class="widget__label widget__label--humidity">{{ sensor.data.humidity }}%</span>
     </div>
@@ -15,10 +15,15 @@
 </template>
 
 <script>
+import {round} from '@/filters.js'
+
 export default {
   props: ['sensor'],
   data: function() {
     return { };
+  },
+  methods : {
+    round
   },
 };
 </script>
