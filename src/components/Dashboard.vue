@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
   
     <ul v-if="socketMessage">
       <li v-for="sensor in socketMessage">
