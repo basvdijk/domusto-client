@@ -8,7 +8,8 @@
     </ul>
   
     <div class="domusto__status">
-      <p v-if="isConnected">Connected to DOMUSTO server, waiting for first data</p>
+      <p v-if="isConnected && !socketMessage">Connected to DOMUSTO server, waiting for first data</p>
+      <p v-if="isConnected && socketMessage">Connected to DOMUSTO server, receiving data</p>
       <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
 
