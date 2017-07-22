@@ -7,9 +7,11 @@
       </li>
     </ul>
 
+    <div style="clear: both"></div>
+
     <ul v-if="outputs">
       <li v-for="output in outputs">
-        {{ input }}
+        {{ output }}
       </li>
     </ul>
   
@@ -31,10 +33,11 @@ import axios from 'axios';
 
 
 export default {
-  name: 'hello',
+  name: 'dashboard',
   data: () => ({
     socketMessage: null,
     inputs: null,
+    outputs: null,
     isConnected: false,
     msg: 'Welcome to Your Vue.js App',
   }),
