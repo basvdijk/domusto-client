@@ -15,6 +15,7 @@ export default {
 
 html {     
     background-color: #1d1d21;
+    background-image: url(assets/backgrounds/micro-carbon.png);
 }
 
 #app {

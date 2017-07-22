@@ -1,7 +1,7 @@
 <template>
   <div>
   
-    <ul v-if="socketMessage">
+    <ul class="widgets" v-if="socketMessage">
       <li v-for="sensor in socketMessage">
         <temperature :sensor="sensor"></temperature>
       </li>
@@ -92,5 +92,13 @@ export default {
 
 ul {
   list-style: none;
+}
+
+.widgets {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

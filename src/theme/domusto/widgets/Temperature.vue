@@ -5,7 +5,7 @@
       /
       <span class="widget__label widget__label--humidity">{{ sensor.data.humidity }}%</span>
     </div>
-     <div class="widget__battery" v-bind:class="{ 'widget__battery--orange': (sensor.data.batteryLevel === 0) }"></div> 
+     <div class="widget__battery" v-bind:class="{ 'widget__battery--yellow': (sensor.data.batteryLevel === 0) }"></div> 
     <div class="widget__title">{{ sensor.device.name }}</div>
   </div>
 </template>
@@ -29,12 +29,12 @@ export default {
   float: left;
   border: 4px solid #1d1d21;
   padding: 10px;
-  margin: 20px;
+  margin: 10px;
   border-radius: 8px;
   text-align: center;
   width: 120px;
   font-family: 'Teko', sans-serif;
-  box-shadow: 0 0 5px #52525a;
+  box-shadow: 1px 1px 2px #52525a;
   z-index: -2;
   position: relative;
 }
@@ -77,11 +77,32 @@ export default {
     background-color: #333;
 }
 
+.widget__battery--green {
+    border-color:  #6ad46a;
+    background-color: lime;
+    box-shadow: 0 0 10px lime;
+}
 .widget__battery--orange {
     border-color:  #e29200;
     background-color: orange;
     box-shadow: 0 0 10px orange;
 }
+.widget__battery--yellow {
+    border-color:  #F3F372;
+    background-color: yellow;
+    box-shadow: 0 0 10px yellow;
+}
+.widget__battery--violet {
+    border-color:  #e68de6;
+    background-color: violet;
+    box-shadow: 0 0 10px violet;
+}
+.widget__battery--violet {
+    border-color:  #a6f7f7;
+    background-color: cyan;
+    box-shadow: 0 0 10px cyan;
+}
+
 
 .widget__battery-value {
   border-radius: 2px;
