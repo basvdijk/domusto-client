@@ -6,13 +6,19 @@
         <temperature :sensor="sensor"></temperature>
       </li>
     </ul>
+
+    <ul v-if="outputs">
+      <li v-for="output in outputs">
+        {{ input }}
+      </li>
+    </ul>
   
     <div class="domusto__status">
       <p v-if="isConnected && !socketMessage">Connected to DOMUSTO server, waiting for first data</p>
       <p v-if="isConnected && socketMessage">Connected to DOMUSTO server, receiving data</p>
       <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
-
+  
     <pre>{{socketMessage}}</pre>
   
   </div>
@@ -21,20 +27,29 @@
 <script>
 
 import Temperature from '@/theme/domusto/widgets/Temperature';
-
-// let socket = io.connect('http://192.168.178.72:3000/', { reconnect: true });
-// socket.on('stream', (data) => {
-//     app.sensorData = data;
-// });
+import axios from 'axios';
 
 
 export default {
   name: 'hello',
   data: () => ({
     socketMessage: null,
+    inputs: null,
     isConnected: false,
     msg: 'Welcome to Your Vue.js App',
   }),
+
+  created() {
+    axios.get('http://192.168.178.72:3000/output')
+      .then(response => {
+        // JSON responses are automatically parsed.
+        console.log(response);
+        this.outputs = response.data
+      })
+      .catch(e => {
+        this.errors.push(e)
+      })
+  },
 
   sockets: {
     connect() {
