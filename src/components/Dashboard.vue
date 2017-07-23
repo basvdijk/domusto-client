@@ -6,14 +6,14 @@
         <switch-on-off :output="output"></switch-on-off>
       </li>
   
-      <li v-if="socketMessage" v-for="sensor in socketMessage">
-        <temperature :sensor="sensor"></temperature>
+      <li v-if="inputDevices" v-for="inputDevice in inputDevices">
+        <temperature :sensor="inputDevice"></temperature>
       </li>
     </ul>
   
     <div class="domusto__status">
-      <p v-if="isConnected && !socketMessage">Connected to DOMUSTO server, waiting for first data</p>
-      <p v-if="isConnected && socketMessage">Connected to DOMUSTO server, receiving data</p>
+      <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
+      <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p>
       <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
   
@@ -21,7 +21,7 @@
     <pre>{{outputs}}</pre>
   
     <h1>sockets.io</h1>
-    <pre>{{socketMessage}}</pre>
+    <pre>{{inputDevices}}</pre>
   
   </div>
 </template>
@@ -38,7 +38,7 @@ import axios from 'axios';
 export default {
   name: 'dashboard',
   data: () => ({
-    socketMessage: null,
+    inputDevices: null,
     inputs: null,
     outputs: null,
     isConnected: false,
@@ -72,9 +72,9 @@ export default {
     },
 
     // Fired when the server sends something on the "messageChannel" channel.
-    stream(data) {
+    inputDevices(data) {
       console.log(data);
-      this.socketMessage = data;
+      this.inputDevices = data;
     }
   },
 
