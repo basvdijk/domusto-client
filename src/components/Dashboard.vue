@@ -30,7 +30,7 @@
 
 const CONFIG = require('@/config');
 
-import Temperature from '@/theme/domusto/widgets/Temperature';
+import Temperature from '@/themes/domusto/widgets/Temperature';
 import axios from 'axios';
 
 

@@ -9,7 +9,7 @@
 let CONFIG = require('@/config.example.js');
 
 // Load the preferred theme and skin
-require('@/theme/' + CONFIG.ui.theme + '/skins/' + CONFIG.ui.skin + '.css');
+require('@/themes/' + CONFIG.ui.theme + '/skins/' + CONFIG.ui.skin + '.css');
 
 export default {
   name: 'app',
