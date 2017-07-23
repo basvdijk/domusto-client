@@ -13,33 +13,19 @@ const CONFIG = require('@/config');
 export default {
   props: ['output'],
   data: function () {
-    return {};
+    return {
+    };
   },
   methods: {
     round,
     toggle: function () {
 
-      console.log(this.output);
+      let command = this.output.state === 'off' ? 'on' : 'off';
 
-      if (this.output.state === 'off') {
-        axios.get(this.output.actions.on).then(response => {
-          this.output.state = response.state;
-        });
-      } else {
-        axios.get(this.output.actions.off).then(response => {
-          this.output.state = response.state;
-        });
-      }
+      axios.get(this.output.actions[command]).then(response => {
+        this.output.state = response.data.state;
+      });
 
-      // axios.get(CONFIG.server.address + '/output')
-      // .then(response => {
-      //   // JSON responses are automatically parsed.
-      //   console.log(response);
-      //   this.outputs = response.data
-      // })
-      // .catch(e => {
-      //   this.errors.push(e)
-      // })
     }
   },
 };

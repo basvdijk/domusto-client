@@ -1,23 +1,15 @@
 <template>
   <div>
   
-    <div class="widgets">
+    <ul class="widgets">
+      <li v-for="output in outputs">
+        <switch-on-off :output="output"></switch-on-off>
+      </li>
   
-     
-  
-      <ul v-if="socketMessage">
-        <li v-for="sensor in socketMessage">
-          <temperature :sensor="sensor"></temperature>
-        </li>
-      </ul>
-  
-      <ul v-if="outputs">
-        <li v-for="output in outputs">
-          <switch-on-off :output="output"></switch-on-off>
-        </li>
-      </ul>
-  
-    </div>
+      <li v-if="socketMessage" v-for="sensor in socketMessage">
+        <temperature :sensor="sensor"></temperature>
+      </li>
+    </ul>
   
     <div class="domusto__status">
       <p v-if="isConnected && !socketMessage">Connected to DOMUSTO server, waiting for first data</p>
@@ -110,6 +102,7 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
