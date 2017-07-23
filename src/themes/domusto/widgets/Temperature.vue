@@ -5,13 +5,14 @@
       /
       <span class="widget__label widget__label--humidity">{{ sensor.data.humidity }}%</span>
     </div>
-     <div class="widget__battery" v-bind:class="{ 'widget__battery--yellow': (sensor.data.batteryLevel === 0) }"></div> 
+    <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--yellow': (sensor.data.batteryLevel === 0) }"></div>
     <div class="widget__title">{{ sensor.device.name }}</div>
   </div>
 </template>
 
 <script>
 import { round } from '@/filters.js'
+const CONFIG = require('@/config');
 
 export default {
   props: ['sensor'],
@@ -25,6 +26,5 @@ export default {
 </script>
 
 <style>
-
 
 </style>

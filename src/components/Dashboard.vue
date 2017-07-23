@@ -1,19 +1,23 @@
 <template>
   <div>
   
-    <ul class="widgets" v-if="socketMessage">
-      <li v-for="sensor in socketMessage">
-        <temperature :sensor="sensor"></temperature>
-      </li>
-    </ul>
-
-    <div style="clear: both"></div>
-
-    <ul v-if="outputs">
-      <li v-for="output in outputs">
-        {{ output }}
-      </li>
-    </ul>
+    <div class="widgets">
+  
+     
+  
+      <ul v-if="socketMessage">
+        <li v-for="sensor in socketMessage">
+          <temperature :sensor="sensor"></temperature>
+        </li>
+      </ul>
+  
+      <ul v-if="outputs">
+        <li v-for="output in outputs">
+          <switch-on-off :output="output"></switch-on-off>
+        </li>
+      </ul>
+  
+    </div>
   
     <div class="domusto__status">
       <p v-if="isConnected && !socketMessage">Connected to DOMUSTO server, waiting for first data</p>
@@ -21,6 +25,10 @@
       <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
   
+    <h1>outputs</h1>
+    <pre>{{outputs}}</pre>
+  
+    <h1>sockets.io</h1>
     <pre>{{socketMessage}}</pre>
   
   </div>
@@ -31,6 +39,7 @@
 const CONFIG = require('@/config');
 
 import Temperature from '@/themes/domusto/widgets/Temperature';
+import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
 import axios from 'axios';
 
 
@@ -43,6 +52,10 @@ export default {
     isConnected: false,
     msg: 'Welcome to Your Vue.js App',
   }),
+  components: {
+    Temperature,
+    SwitchOnOff
+  },
 
   created() {
     axios.get(CONFIG.server.address + '/output')
@@ -80,9 +93,6 @@ export default {
     }
   },
 
-  components: {
-    Temperature,
-  },
 };
 </script>
 
