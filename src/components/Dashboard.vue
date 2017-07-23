@@ -28,6 +28,8 @@
 
 <script>
 
+const CONFIG = require('@/config');
+
 import Temperature from '@/theme/domusto/widgets/Temperature';
 import axios from 'axios';
 
@@ -43,7 +45,7 @@ export default {
   }),
 
   created() {
-    axios.get('http://192.168.178.72:3000/output')
+    axios.get(CONFIG.server.address + '/output')
       .then(response => {
         // JSON responses are automatically parsed.
         console.log(response);
