@@ -5,7 +5,7 @@ let config = {
   ui: {
     theme: "domusto",
     skin: "default",
-    temperatureFormat: "degrees" // degrees | fahrenheit
+    temperatureFormat: "celcius" // celcius | fahrenheit
   }
 };
 
