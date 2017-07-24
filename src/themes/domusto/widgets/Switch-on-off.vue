@@ -1,6 +1,6 @@
 <template>
   <div class="widget widget--switch" v-on:click="toggle">
-  
+    <!-- <audio ref="audio" :src="audio"></audio> -->
     <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--green': (output.state === 'on') }"></div>
     <div class="widget__title">{{ output.name }}</div>
   
@@ -13,6 +13,8 @@ import { mapGetters } from 'vuex';
 import axios from 'axios';
 import { round } from '@/app/filters.js'
 
+let CONFIG = require('@/config.js');
+
 export default {
   props: ['output'],
   data: function () {
@@ -20,15 +22,32 @@ export default {
 
     };
   },
+  computed: {
+    audio() {
+      var audio = new Audio();
+      audio.src = require('../assets/sounds/140773_71257-hq-v2.mp3');
+      audio.preload = 'auto';     
+      return audio;
+    }
+  },
   methods: {
     round,
     toggle: function () {
+           
+      this.audio.currentTime = 0.01;
+      this.audio.play();
 
       let command = this.output.state === 'off' ? 'on' : 'off';
 
-      axios.get(this.output.actions[command]).then(response => {
-        this.output.state = response.data.state;
-      });
+      if (this.output.actions) {
+
+        axios.get(this.output.actions[command]).then(response => {
+          this.output.state = response.data.state;
+        });
+
+      } else {
+        console.error('no action defined for for command: ' + command);
+      }
 
     }
   },

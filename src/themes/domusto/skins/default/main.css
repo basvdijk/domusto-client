@@ -3,7 +3,11 @@
 
 html {     
     background-color: #1d1d21;
-    background-image: url(../../assets/micro-carbon.png);
+    background-image: url(../../assets/images/micro-carbon.png);
+    
+    /* Disable highligting when tapped */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 #app {
@@ -12,3 +16,4 @@ html {
   -moz-osx-font-smoothing: grayscale;
   color: #368bcb;
 }
+
