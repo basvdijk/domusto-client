@@ -10,6 +10,8 @@
   font-family: 'Teko', sans-serif;
   box-shadow: 1px 1px 2px #52525a;
   position: relative;
+
+  /* transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out; */
 }
 
 .widget:after {
@@ -23,6 +25,18 @@
   z-index: -1;
   left: 0px;
   top: 0;
+}
+
+/* .widget:hover {
+    border-color: #666; 
+    box-shadow: 1px 1px 2px #52525a, 0 0 10px #666;
+} */
+
+.widget--pressed {
+    border-width: 5px;
+    width: 118px;
+    height: 46px;
+    box-shadow: 2px 2px 2px #52525a;
 }
 
 .widget--switch {
@@ -58,6 +72,11 @@
     border-color:  #252525;
     background-color: #212325;
     box-shadow: 1px 1px 1px #0c0c0c inset;
+
+    /* transition: 
+    border-color .01s ease-in-out, 
+    background-color .05s ease-in-out,
+    box-shadow .05s ease-in-out; */
 }
 
 .widget__status-indicator--green {

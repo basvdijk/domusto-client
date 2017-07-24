@@ -28,12 +28,11 @@
 
 <script>
 
-const CONFIG = require('@/config');
+import CONFIG from '@/config';
 
 import Temperature from '@/themes/domusto/widgets/Temperature';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
-import axios from 'axios';
-import { updateOutput } from '../actions'
+import { updateOutput } from '@/vuex/actions';
 
 export default {
   vuex: {
@@ -41,11 +40,6 @@ export default {
       updateOutput,
     }
   },
-  // computed: {
-  //   outputs() {
-  //     return this.$store.state.outputs
-  //   }
-  // },
   name: 'dashboard',
   data: () => ({
     inputDevices: null,
@@ -58,24 +52,9 @@ export default {
   },
   computed: {
     outputs() {
-      return this.$store.state.outputs
+      return this.$store.state.outputs;
     }
   },
-  created() {
-    axios.get(CONFIG.server.address + '/output')
-      .then(response => {
-        // JSON responses are automatically parsed.
-        console.log(response);
-        // this.outputs = response.data
-
-       this.$store.commit('SET_OUTPUTS', { outputs: response.data });
-      })
-      .catch(e => {
-        console.log(e);
-        // this.errors.push(e)
-      })
-  },
-
   sockets: {
     connect() {
       // Fired when the socket connects.

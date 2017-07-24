@@ -6,10 +6,10 @@
 
 <script>
 
-let CONFIG = require('@/config.example.js');
+let CONFIG = require('../config.js');
 
 // Load the preferred theme and skin
-require('@/themes/' + CONFIG.ui.theme + '/skins/' + CONFIG.ui.skin + '.css');
+require('@/themes/' + CONFIG.ui.theme + '/skins/' + CONFIG.ui.skin + '/main.css');
 
 export default {
   name: 'app',
@@ -17,18 +17,17 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Teko');
+/* @import url('https://fonts.googleapis.com/css?family=Teko');
 
 html {     
     background-color: #1d1d21;
-    background-image: url(assets/backgrounds/micro-carbon.png);
+    background-image: url(../assets/backgrounds/micro-carbon.png);
 }
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   color: #368bcb;
-}
+} */
 </style>

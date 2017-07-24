@@ -1,30 +1,20 @@
-// import Vue from 'vue';
-// import Vuex from 'vuex';
-
-// Vue.use(Vuex)
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 const state = {
     outputs: []
-}
+};
 
 const mutations = {
     SET_OUTPUTS(state, payload) {
         // console.log(state, payload);
         state.outputs = payload.outputs
     },
-}
+};
 
-// export default new Vuex.Store({
-//   state,
-//   mutations
-// });
-
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
     state,
     mutations
-})
+});

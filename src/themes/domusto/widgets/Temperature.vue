@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { round } from '@/filters.js'
+import { round } from '@/app/filters.js'
 const CONFIG = require('@/config');
 
 export default {

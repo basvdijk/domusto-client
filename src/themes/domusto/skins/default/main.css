@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Teko');
+@import './widget.css';
+
+html {     
+    background-color: #1d1d21;
+    background-image: url(../../assets/micro-carbon.png);
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #368bcb;
+}
