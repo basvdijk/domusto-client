@@ -1,5 +1,7 @@
 <template>
   <div>
+
+    <switch-on-off :output="testOutput"></switch-on-off>
   
     <ul class="widgets">
       <li v-for="output in outputs">
@@ -45,6 +47,10 @@ export default {
     inputDevices: null,
     inputs: null,
     isConnected: false,
+    testOutput: {
+      name: 'test',
+      state: 'on'
+    }
   }),
   components: {
     Temperature,
