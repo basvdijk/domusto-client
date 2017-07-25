@@ -1,5 +1,5 @@
 <template>
-  <div class="widget widget--switch" v-on:click="toggle">
+  <div class="widget widget--switch" v-on:mousedown="toggle">
     <!-- <audio ref="audio" :src="audio"></audio> -->
     <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--green': (output.state === 'on') }"></div>
     <div class="widget__title">{{ output.name }}</div>
