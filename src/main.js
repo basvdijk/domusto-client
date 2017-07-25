@@ -8,7 +8,7 @@ import axios from 'axios';
 
 import App from '@/components/App';
 import router from './router';
-import store from './vuex/store';
+import store from './store';
 import api from '@/api';
 
 import CONFIG from '@/config';

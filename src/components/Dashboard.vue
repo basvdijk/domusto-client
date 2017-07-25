@@ -34,7 +34,7 @@ import CONFIG from '@/config';
 
 import Temperature from '@/themes/domusto/widgets/Temperature';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
-import { updateOutput } from '@/vuex/actions';
+import { updateOutput } from '@/store/actions';
 
 export default {
   vuex: {
