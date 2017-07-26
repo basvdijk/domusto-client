@@ -15,6 +15,13 @@
   position: relative;
 
   /* transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out; */
+
+
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+
 }
 
 .widget:after {
@@ -35,7 +42,7 @@
     box-shadow: 1px 1px 2px #52525a, 0 0 10px #666;
 } */
 
-.widget--pressed {
+.widget:active {
     border-width: 5px;
     width: 118px;
     height: 46px;
