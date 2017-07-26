@@ -8,22 +8,22 @@
         <switch-on-off :output="output"></switch-on-off>
       </li>
   
-      <li v-if="inputDevices" v-for="inputDevice in inputDevices">
-        <temperature :sensor="inputDevice"></temperature>
-      </li>
+       <li v-for="input in inputs">
+        <temperature :sensor="input"></temperature>
+      </li> 
     </ul>
   
     <div class="domusto__status">
-      <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
-      <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p>
+      <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
+      <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
       <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
     </div>
   
     <h1>outputs</h1>
     <pre>{{outputs}}</pre>
   
-    <h1>sockets.io</h1>
-    <pre>{{inputDevices}}</pre>
+    <h1>inputs</h1>
+    <pre>{{inputs}}</pre>
   
   </div>
 </template>
@@ -34,18 +34,18 @@ import CONFIG from '@/config';
 
 import Temperature from '@/themes/domusto/widgets/Temperature';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
-import { updateOutput } from '@/store/actions';
+import { outputsSet } from '@/store/actions';
 
 export default {
   vuex: {
     actions: {
-      updateOutput,
+      outputsSet,
     }
   },
   name: 'dashboard',
   data: () => ({
     inputDevices: null,
-    inputs: null,
+    // inputs: null,
     isConnected: false,
     testOutput: {
       name: 'test',
@@ -57,6 +57,9 @@ export default {
     SwitchOnOff
   },
   computed: {
+    inputs() {
+      return this.$store.state.inputs;
+    },
     outputs() {
       return this.$store.state.outputs;
     }
@@ -64,17 +67,19 @@ export default {
   sockets: {
     connect() {
       // Fired when the socket connects.
+      console.log('connected');
       this.isConnected = true;
     },
 
     disconnect() {
+      console.log('disconnected');
       this.isConnected = false;
     },
 
     // Fired when the server sends something on the "messageChannel" channel.
-    inputDevices(data) {
-      console.log(data);
-      this.inputDevices = data;
+    deviceUpdate(data) {
+      console.log('data received', data);
+      this.$store.commit('INPUT_UPDATE', { inputData: data });
     }
   },
 
@@ -96,6 +101,10 @@ export default {
 
 ul {
   list-style: none;
+}
+
+pre {
+  max-width: 100vw;
 }
 
 .widgets {

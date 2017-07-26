@@ -1,5 +1,5 @@
 <template>
-  <div class="widget widget--switch" v-on:mousedown="toggle">
+  <div class="widget widget--switch" v-on:click="toggle">
     <!-- <audio ref="audio" :src="audio"></audio> -->
     <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--green': (output.state === 'on') }"></div>
     <div class="widget__title">{{ output.name }}</div>
@@ -25,7 +25,7 @@ export default {
   computed: {
     audio() {
       var audio = new Audio();
-      audio.src = require('../assets/sounds/140773_71257-hq-v2.mp3');
+      audio.src = require('../assets/sounds/96640_1386366-hq.mp3');
       audio.preload = 'auto';     
       return audio;
     }
