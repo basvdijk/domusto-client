@@ -71,19 +71,21 @@ export default {
       this.isConnected = true;
     },
 
+    // Fired when the socket disconnects.
     disconnect() {
       console.log('disconnected');
       this.isConnected = false;
     },
 
-    // Fired when the server sends something on the "messageChannel" channel.
-    deviceUpdate(data) {
-      console.log('data received', data);
+    // Fired when the server sends something on the "inputDeviceUpdate" channel.
+    inputDeviceUpdate(data) {
+      console.log('input device update:', data);
       this.$store.commit('INPUT_UPDATE', { inputData: data });
     },
 
+    // Fired when the server sends something on the "outputDeviceUpdate" channel.
     outputDeviceUpdate(data) {
-      console.log('output data received', data);
+      console.log('output device update', data);
       this.$store.commit('OUTPUT_UPDATE', { outputData: data });
     }
   },
