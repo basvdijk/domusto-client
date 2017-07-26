@@ -32,6 +32,19 @@ const mutations = {
         }
 
     },
+    OUTPUT_UPDATE(state, payload) {
+
+        for (var i = 0; i < state.outputs.length; i++) {
+            var output = state.outputs[i];
+
+            if (output.id === payload.outputData.id) {
+                Vue.set(state.outputs, i, payload.outputData);
+                return;
+            }
+            
+        }
+
+    },
     OUTPUTS_SET(state, payload) {
         state.outputs = payload.outputs
     },

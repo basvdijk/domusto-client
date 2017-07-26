@@ -9,3 +9,7 @@ export const inputsSet = ({ dispatch }, input) => {
 export const inputUpdate = ({ dispatch }, input) => {
   dispatch('INPUT_UPDATE');
 }
+
+export const outputUpdate = ({ dispatch }, output) => {
+  dispatch('OUTPUT_UPDATE');
+}

@@ -80,6 +80,11 @@ export default {
     deviceUpdate(data) {
       console.log('data received', data);
       this.$store.commit('INPUT_UPDATE', { inputData: data });
+    },
+
+    outputDeviceUpdate(data) {
+      console.log('output data received', data);
+      this.$store.commit('OUTPUT_UPDATE', { outputData: data });
     }
   },
 

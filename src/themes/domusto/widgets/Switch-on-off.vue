@@ -42,7 +42,7 @@ export default {
       if (this.output.actions) {
 
         axios.get(this.output.actions[command]).then(response => {
-          this.output.state = response.data.state;
+          // this.output.state = response.data.state;
         });
 
       } else {
