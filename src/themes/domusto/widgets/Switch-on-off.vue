@@ -25,7 +25,7 @@ export default {
   computed: {
     audio() {
       var audio = new Audio();
-      audio.src = require('../assets/sounds/96640_1386366-hq.mp3');
+      audio.src = require('../assets/sounds/220176_4100837-hq.mp3');
       audio.preload = 'auto';     
       return audio;
     }
