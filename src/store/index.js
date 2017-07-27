@@ -2,16 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 const state = {
-    inputs: {
-        item1: {
-            id: 'input-3',
-            data: 1
-        },
-        item2: {
-            id: 'input-3',
-            data: 1
-        }
-    },
+    inputs: [],
     outputs: []
 };
 

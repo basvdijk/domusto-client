@@ -1,29 +1,47 @@
 <template>
   <div>
 
-    <switch-on-off :output="testOutput"></switch-on-off>
-  
-    <ul class="widgets">
-      <li v-for="output in outputs">
-        <switch-on-off :output="output"></switch-on-off>
-      </li>
-  
-       <li v-for="input in inputs">
-        <temperature :sensor="input"></temperature>
-      </li> 
-    </ul>
-  
-    <div class="domusto__status">
-      <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
-      <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
-      <p v-if="!isConnected">NOT connected to DOMUSTO server!</p>
+    <header class="toolbar">
+      <!-- <div class="toolbar--logo"></div> -->
+      <span v-if="!isConnected">NOT connected to DOMUSTO server!</span>
+    </header>
+   
+    <div class="widgets">
+        <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
+        <temperature v-for="input in inputs" :key="input.id" :sensor="input"></temperature>      
     </div>
   
-    <h1>outputs</h1>
+     <div class="widget widget--switch switch-group--3 switch-position--left">
+      <div class="widget__title">UP</div>
+    </div>
+    <div class="widget widget--switch switch-group--3 switch-position--middle">
+      <div class="widget__title">STOP</div>
+    </div>
+    <div class="widget widget--switch switch-group--3 switch-position--right">
+      <div class="widget__title">DOWN</div>
+    </div>
+
+
+    <div class="widget widget--switch switch-group--2 switch-position--left">
+      <div class="widget__title">UP</div>
+    </div>
+    <div class="widget widget--switch switch-group--2 switch-position--right">
+      <div class="widget__title">DOWN</div>
+    </div> 
+  
+    <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
+
+    <div class="domusto__status">
+      <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
+        <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
+      
+    </div>
+  
+    <!-- <h1>outputs</h1>
     <pre>{{outputs}}</pre>
   
     <h1>inputs</h1>
-    <pre>{{inputs}}</pre>
+    <pre>{{inputs}}</pre> -->
   
   </div>
 </template>
@@ -87,7 +105,7 @@ export default {
     outputDeviceUpdate(data) {
       console.log('output device update', data);
       this.$store.commit('OUTPUT_UPDATE', { outputData: data });
-    }
+    },
   },
 
   methods: {
@@ -116,7 +134,7 @@ pre {
 
 .widgets {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

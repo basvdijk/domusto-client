@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Teko');
 @import './widget.css';
+@import './widget-switch.css';
+@import './widget-status-indicator.css';
 
 html {     
     background-color: #1d1d21;
@@ -8,6 +10,12 @@ html {
     /* Disable highligting when tapped */
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
 }
 
 #app {
@@ -17,3 +25,36 @@ html {
   color: #368bcb;
 }
 
+@keyframes fadeInOut {
+    0% { text-shadow: 0 0 10px yellow; color: yellow; }
+    50% { text-shadow: 0 0 0 #333; color: #333; }
+    100% { text-shadow: 0 0 10px yellow; color: yellow; }
+}
+
+
+.toolbar {
+  height: 30px;
+  text-align: center;
+  background: #0c0c0a;
+  padding: 5px;
+  border-bottom: 1px solid #333;
+  background-image: url(../../assets/images/micro-carbon.png);
+
+      font-family: 'Teko', sans-serif;
+    font-size: 22px;
+    color: #FFEB3B;
+    text-shadow: 0 0 10px yellow;
+
+    animation: fadeInOut 1s infinite;
+    /* animation-iteration-count:infinite; */
+}
+
+
+.toolbar--logo {
+  width: 100px;
+  height: 20px;
+  float: left;
+  opacity: .15;
+  background-repeat: no-repeat;
+  background-image: url(../../assets/images/domusto-logo.svg);
+}
