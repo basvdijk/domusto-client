@@ -1,15 +1,18 @@
 <template>
   <div>
 
-    <header class="toolbar">
+    <header class="toolbar" v-bind:class="{ 'toolbar--active': !isConnected }">
       <!-- <div class="toolbar--logo"></div> -->
-      <span v-if="!isConnected">NOT connected to DOMUSTO server!</span>
+      <span v-if="!isConnected">Disconnected from DOMUSTO server</span>
     </header>
    
     <div class="widgets">
         <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
-        <temperature v-for="input in inputs" :key="input.id" :sensor="input"></temperature>      
     </div>
+
+     <div class="widgets">
+        <temperature v-for="input in inputs" :key="input.id" :sensor="input"></temperature>      
+     </div>
   
      <div class="widget widget--switch switch-group--3 switch-position--left">
       <div class="widget__title">UP</div>
@@ -87,6 +90,7 @@ export default {
       // Fired when the socket connects.
       console.log('connected');
       this.isConnected = true;
+      
     },
 
     // Fired when the socket disconnects.
