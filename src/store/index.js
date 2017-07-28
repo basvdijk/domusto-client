@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 const state = {
-    inputs: [],
-    outputs: []
+    inputs: {},
+    outputs: {}
 };
 
 const mutations = {
@@ -12,27 +12,17 @@ const mutations = {
     },
     INPUT_UPDATE(state, payload) {
 
-        for (var i = 0; i < state.inputs.length; i++) {
-            var input = state.inputs[i];
-
-            if (input.id === payload.inputData.id) {
-                Vue.set(state.inputs, i, payload.inputData);
-                return;
-            }
-            
+        for (var i = 0; i < payload.inputData.length; i++) {
+            let device = payload.inputData[i];
+            Vue.set(state.inputs, device.id, device);
         }
 
     },
     OUTPUT_UPDATE(state, payload) {
 
-        for (var i = 0; i < state.outputs.length; i++) {
-            var output = state.outputs[i];
-
-            if (output.id === payload.outputData.id) {
-                Vue.set(state.outputs, i, payload.outputData);
-                return;
-            }
-            
+        for (var i = 0; i < payload.outputData.length; i++) {
+            let device = payload.outputData[i];
+            Vue.set(state.outputs, device.id, device);
         }
 
     },
