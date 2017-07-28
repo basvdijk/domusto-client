@@ -26,21 +26,21 @@ new Vue({
   components: { App },
   created: function () {
 
-    api.get('output').then()
-      .then(response => {
-        this.$store.commit('OUTPUTS_SET', { outputs: response.data });
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    // api.get('output').then()
+    //   .then(response => {
+    //     this.$store.commit('OUTPUTS_SET', { outputs: response.data });
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //   });
 
-    api.get('input').then()
-      .then(response => {
-        this.$store.commit('INPUTS_SET', { inputs: response.data });
-      })
-      .catch(e => {
-        console.log(e);
-      });
+    // api.get('input').then()
+    //   .then(response => {
+    //     this.$store.commit('INPUTS_SET', { inputs: response.data });
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //   });
 
   },
 });
