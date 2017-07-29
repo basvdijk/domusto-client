@@ -1,21 +1,51 @@
 <template>
   <div>
-
+  
     <header class="toolbar" v-bind:class="{ 'toolbar--active': !isConnected }">
       <!-- <div class="toolbar--logo"></div> -->
       <span v-if="!isConnected">Disconnected from DOMUSTO server</span>
     </header>
-   
-    <div class="widgets">
-        <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
-
-        <template v-for="input in inputs">
-          <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
-          <power :key="input.id" v-if="input.type === 'power'" :sensor="input"></power>  
-        </template>
-     </div>
   
-     <div class="widget widget--switch switch-group--3 switch-position--left">
+    <div class="widgets">
+
+            <div class="widget switch-group">
+  
+        <div class="widget-switch--sub switch-position--left">
+          <div class="widget__title">UP</div>
+        </div>
+        <div class="widget-switch--sub switch-position--right">
+          <div class="widget__title">DOWN</div>
+        </div>
+  
+      </div>
+    
+     <switch-on-off :output="testOutput"></switch-on-off> 
+      <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
+
+      <template v-for="input in inputs">
+        <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
+        <power :key="input.id" v-if="input.type === 'power'" :sensor="input"></power>
+      </template>
+  
+
+  
+      <div class="widget switch-group">
+  
+        <div class="widget-switch--sub switch-position--left">
+          <div class="widget__title">UP</div>
+        </div>
+        <div class="widget-switch--sub switch-position--middle">
+          <div class="widget__title">STOP</div>
+        </div>
+        <div class="widget-switch--sub switch-position--right">
+          <div class="widget__title">DOWN</div>
+        </div>
+  
+      </div>
+  
+    </div>
+  
+    <div class="widget widget--switch switch-group--3 switch-position--left">
       <div class="widget__title">UP</div>
     </div>
     <div class="widget widget--switch switch-group--3 switch-position--middle">
@@ -24,28 +54,27 @@
     <div class="widget widget--switch switch-group--3 switch-position--right">
       <div class="widget__title">DOWN</div>
     </div>
-
-
+  
     <div class="widget widget--switch switch-group--2 switch-position--left">
       <div class="widget__title">UP</div>
     </div>
     <div class="widget widget--switch switch-group--2 switch-position--right">
       <div class="widget__title">DOWN</div>
-    </div> 
+    </div>
   
     <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
-
+  
     <div class="domusto__status">
       <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
-        <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
-      
+          <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
+  
     </div>
   
     <!-- <h1>outputs</h1>
-    <pre>{{outputs}}</pre>
-  
-    <h1>inputs</h1>
-    <pre>{{inputs}}</pre> -->
+      <pre>{{outputs}}</pre>
+    
+      <h1>inputs</h1>
+      <pre>{{inputs}}</pre> -->
   
   </div>
 </template>
@@ -93,7 +122,7 @@ export default {
       // Fired when the socket connects.
       console.log('connected');
       this.isConnected = true;
-      
+
     },
 
     // Fired when the socket disconnects.
