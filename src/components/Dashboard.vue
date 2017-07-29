@@ -7,61 +7,23 @@
     </header>
   
     <div class="widgets">
-
-            <div class="widget switch-group">
   
-        <div class="widget-switch--sub switch-position--left">
-          <div class="widget__title">UP</div>
-        </div>
-        <div class="widget-switch--sub switch-position--right">
-          <div class="widget__title">DOWN</div>
-        </div>
-  
-      </div>
-    
      <switch-on-off :output="testOutput"></switch-on-off> 
-      <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
+
+      <template v-for="output in outputs">
+        <switch-on-off :key="output.id" v-if="output.subtype === 'on/off'" :output="output"></switch-on-off>
+        <switch-up-down :key="output.id" v-if="output.subtype === 'up/down'" :output="output"></switch-up-down>
+
+      </template>
+
 
       <template v-for="input in inputs">
         <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
         <power :key="input.id" v-if="input.type === 'power'" :sensor="input"></power>
       </template>
-  
+      
+    </div>
 
-  
-      <div class="widget switch-group">
-  
-        <div class="widget-switch--sub switch-position--left">
-          <div class="widget__title">UP</div>
-        </div>
-        <div class="widget-switch--sub switch-position--middle">
-          <div class="widget__title">STOP</div>
-        </div>
-        <div class="widget-switch--sub switch-position--right">
-          <div class="widget__title">DOWN</div>
-        </div>
-  
-      </div>
-  
-    </div>
-  
-    <div class="widget widget--switch switch-group--3 switch-position--left">
-      <div class="widget__title">UP</div>
-    </div>
-    <div class="widget widget--switch switch-group--3 switch-position--middle">
-      <div class="widget__title">STOP</div>
-    </div>
-    <div class="widget widget--switch switch-group--3 switch-position--right">
-      <div class="widget__title">DOWN</div>
-    </div>
-  
-    <div class="widget widget--switch switch-group--2 switch-position--left">
-      <div class="widget__title">UP</div>
-    </div>
-    <div class="widget widget--switch switch-group--2 switch-position--right">
-      <div class="widget__title">DOWN</div>
-    </div>
-  
     <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
   
     <div class="domusto__status">
@@ -86,6 +48,7 @@ import CONFIG from '@/config';
 import Temperature from '@/themes/domusto/widgets/Temperature';
 import Power from '@/themes/domusto/widgets/Power';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
+import SwitchUpDown from '@/themes/domusto/widgets/Switch-up-down';
 import { outputsSet } from '@/store/actions';
 
 export default {
@@ -107,7 +70,8 @@ export default {
   components: {
     Temperature,
     Power,
-    SwitchOnOff
+    SwitchOnOff,
+    SwitchUpDown
   },
   computed: {
     inputs() {
