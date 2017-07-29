@@ -1,7 +1,6 @@
 {
     "name": "DOMUSTO",
     "display": "standalone",
-    "orientation": "portrait",
     "background_color": "#1d1d21",
     "theme_color": "#1d1d21",
     "start_url": "/?homescreen=1",

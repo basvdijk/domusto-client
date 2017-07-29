@@ -1,5 +1,5 @@
 <template>
-  <div class="widget widget--th">
+  <div class="widget widget--input">
     <div class="widget__label">
       <span class="widget__label--temperature">{{ round(sensor.data.temperature, 1) }} &deg;C</span>
       /

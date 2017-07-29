@@ -23,12 +23,11 @@
 }
 
 
-.widget--th {
+.widget--input {
     border-radius: 0;
     border-width: 2px;
     background: linear-gradient(to bottom, rgba(47, 47, 47, 1) 0%, rgba(33, 33, 33, 1) 100%);
     width: 124px;
-    height: 54px;
 }
 
 

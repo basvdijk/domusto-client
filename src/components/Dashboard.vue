@@ -8,10 +8,11 @@
    
     <div class="widgets">
         <switch-on-off v-for="output in outputs" :key="output.id" :output="output"></switch-on-off>
-    </div>
 
-     <div class="widgets">
-        <temperature v-for="input in inputs" :key="input.id" :sensor="input"></temperature>      
+        <template v-for="input in inputs">
+          <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
+          <power :key="input.id" v-if="input.type === 'power'" :sensor="input"></power>  
+        </template>
      </div>
   
      <div class="widget widget--switch switch-group--3 switch-position--left">
@@ -54,6 +55,7 @@
 import CONFIG from '@/config';
 
 import Temperature from '@/themes/domusto/widgets/Temperature';
+import Power from '@/themes/domusto/widgets/Power';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
 import { outputsSet } from '@/store/actions';
 
@@ -75,6 +77,7 @@ export default {
   }),
   components: {
     Temperature,
+    Power,
     SwitchOnOff
   },
   computed: {
