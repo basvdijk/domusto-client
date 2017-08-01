@@ -48,3 +48,23 @@
   height: 10px;
   background: green;
 }
+
+.widget__timer-indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 10px;
+    width: 5px;
+    height: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color:  #252525;
+    background-color: #212325;
+    box-shadow: 1px 1px 1px #0c0c0c inset;
+}
+
+.widget__timer-indicator--enabled {
+    border-color:  #e29200;
+    background-color: orange;
+    box-shadow: 0 0 10px orange;
+}
