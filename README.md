@@ -1,10 +1,42 @@
 This project is pre-pre-pre-alpha, so don't expect a working solution.
 
-# domusto-client-vue
+# Setup
 
-> A Vue.js project
+First make sure you have the DOMUSTO server up and running: https://github.com/basvdijk/domusto-server-nodejs
 
-## Build Setup
+## Install npm packages
+
+``` bash
+npm install
+```
+
+## Setup configuration
+
+Copy the config file template in the `src` folder to your own:
+
+``` bash
+cp src config.example.js src config.js
+```
+
+Edit the config file according to your setup.
+
+## Start the client in development mode
+
+```bash
+npm run dev
+```
+
+## Hosting elsewhere
+
+If you don't want to run the client in development mode you first need to build the client
+```bash
+npm run build
+```
+
+After building the `dist` folder contains the builded client. You can host the content of this directory on a server of your choice.
+
+
+# Other building options
 
 ``` bash
 # install dependencies
