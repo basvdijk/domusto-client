@@ -87,6 +87,17 @@ overflow: hidden;
     box-shadow: 2px 2px 2px #52525a; 
 }
 
+.widget--switch:active .switch--moment-on {
+    display: block;
+}
+
+.widget--switch:active .switch--moment-off {
+    display: none;
+}
+
+.switch--moment-on {
+    display: none;
+}
 
 
 /* .widget--switch.switch-position--left,

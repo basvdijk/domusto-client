@@ -13,9 +13,12 @@
       <template v-for="output in outputs">
         <switch-on-off :key="output.id" v-if="output.subtype === 'on/off'" :output="output"></switch-on-off>
         <switch-up-down :key="output.id" v-if="output.subtype === 'up/down'" :output="output"></switch-up-down>
-
+        <switch-momentary :key="output.id" v-if="output.subtype === 'momentary'" :output="output"></switch-momentary>
       </template>
 
+    </div>
+
+    <div class="widgets">
 
       <template v-for="input in inputs">
         <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
@@ -49,6 +52,7 @@ import Temperature from '@/themes/domusto/widgets/Temperature';
 import Power from '@/themes/domusto/widgets/Power';
 import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
 import SwitchUpDown from '@/themes/domusto/widgets/Switch-up-down';
+import SwitchMomentary from '@/themes/domusto/widgets/Switch-momentary';
 import { outputsSet } from '@/store/actions';
 
 export default {
@@ -71,7 +75,8 @@ export default {
     Temperature,
     Power,
     SwitchOnOff,
-    SwitchUpDown
+    SwitchUpDown,
+    SwitchMomentary
   },
   computed: {
     inputs() {
