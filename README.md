@@ -30,7 +30,7 @@ cd ~
 git clone https://github.com/piksel/phantomjs-raspberrypi.git
 chmod -x ~/phantomjs-raspberrypi/bin/phantomjs
 chmod 775 ~/phantomjs-raspberrypi/bin/phantomjs
-chmod 775 ~/phantomjs-raspberrypi/bin/phantomjs
+sudo ln -s /home/pi/phantomjs-raspberrypi/bin/phantomjs /usr/bin/
 ```
 
 Source: https://www.bitpi.co/2015/02/10/installing-phantomjs-on-the-raspberry-pi/
