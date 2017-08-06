@@ -9,10 +9,10 @@
   <div class="widget switch-group">
   
     <div class="widget-switch--sub switch-position--left" v-on:click="up">
-      <div class="widget__title">UP</div>
+      <div class="widget__title">&uarr;</div>
     </div>
     <div class="widget-switch--sub switch-position--right" v-on:click="down">
-      <div class="widget__title">DOWN</div>
+      <div class="widget__title">&darr;</div>
     </div>
   </div>
 

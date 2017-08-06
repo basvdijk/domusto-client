@@ -3,17 +3,29 @@
 }
 
 .switch-group {
-    --widget-switch-width: 140px;
+    --widget-switch-width: 100px;
     width: var(--widget-switch-width);    
     --widget-switch-height: 70px;
     height: var(--widget-switch-height);
 }
 
 .widget--switch {
-    --widget-switch-width: 120px;
+    --widget-switch-width: 80px;
     --widget-switch-height: 50px;
     width: var(--widget-switch-width);
     height: var(--widget-switch-height);
+}
+
+@media screen and (min-width: 480px) {
+
+    .switch-group {
+        --widget-switch-width: 140px;
+    }
+
+    .widget--switch {
+        --widget-switch-width: 120px;
+    }
+
 }
 
 .switch-group {

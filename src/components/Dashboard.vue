@@ -8,7 +8,7 @@
   
     <div class="widgets">
   
-     <switch-on-off :output="testOutput"></switch-on-off> 
+     <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
 
       <template v-for="output in outputs">
         <switch-on-off :key="output.id" v-if="output.subtype === 'on/off'" :output="output"></switch-on-off>

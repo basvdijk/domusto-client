@@ -20,34 +20,41 @@ export default {
   props: ['output'],
   data: function () {
     return {
-
+      busy: false
     };
   },
   computed: {
     audio() {
       var audio = new Audio();
       audio.src = require('../assets/sounds/220176_4100837-hq.mp3');
-      audio.preload = 'auto';     
+      audio.preload = 'auto';
       return audio;
     }
   },
   methods: {
     round,
     toggle: function () {
-           
+
       this.audio.currentTime = 0.01;
       this.audio.play();
 
-      let command = this.output.state === 'off' ? 'on' : 'off';
+      if (!this.busy) {
 
-      if (this.output.actions) {
+        let command = this.output.state === 'off' ? 'on' : 'off';
 
-        axios.get(this.output.actions[command]).then(response => {
-          // this.output.state = response.data.state;
-        });
+        this.busy = true;
 
-      } else {
-        console.error('no action defined for for command: ' + command);
+        if (this.output.actions) {
+
+          axios.get(this.output.actions[command]).then(response => {
+            // this.output.state = response.data.state;
+            this.busy = false;
+          });
+
+        } else {
+          console.error('no action defined for for command: ' + command);
+        }
+
       }
 
     }
