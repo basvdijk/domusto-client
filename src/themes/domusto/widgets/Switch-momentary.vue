@@ -43,9 +43,9 @@ export default {
 
       if (this.output.actions) {
 
-        // axios.get(this.output.actions.trigger).then(response => {
-        //   // this.output.state = response.data.state;
-        // });
+        axios.get(this.output.actions.trigger).then(response => {
+          // this.output.state = response.data.state;
+        });
 
       } else {
         console.error('no action defined for for command: trigger');
