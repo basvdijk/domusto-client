@@ -10,6 +10,51 @@ First make sure you have the DOMUSTO server up and running: https://github.com/b
 npm install
 ```
 
+You might run into this PhantomJS error:
+
+``` bash
+PhantomJS not found on PATH
+Unexpected platform or architecture: linux/arm
+It seems there is no binary available for your platform/architecture
+Try to install PhantomJS globally
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.1.2 (node_modules/fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.1.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"arm"})
+```
+
+Since there is no PhantomJS for linux/arm
+
+To solve this issue run the following commands:
+
+``` bash
+cd ~
+git clone https://github.com/piksel/phantomjs-raspberrypi.git
+chmod -x ~/phantomjs-raspberrypi/bin/phantomjs
+chmod 775 ~/phantomjs-raspberrypi/bin/phantomjs
+chmod 775 ~/phantomjs-raspberrypi/bin/phantomjs
+```
+
+Source: https://www.bitpi.co/2015/02/10/installing-phantomjs-on-the-raspberry-pi/
+
+You can now test PhantomJS to run:
+```bash
+phantomjs
+```
+
+Which might give the error:
+```bash
+phantomjs: error while loading shared libraries: libfontconfig.so.1: cannot open shared object file: No such file or directory
+```
+
+Run to fix:
+```
+sudo apt-get install libfontconfig
+```
+
+Now try again to install the dependencies:
+``` bash
+npm install
+```
+
 ## Setup configuration
 
 Copy the config file template in the `src` folder to your own:
