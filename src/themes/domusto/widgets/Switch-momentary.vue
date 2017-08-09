@@ -39,7 +39,7 @@ export default {
       this.audio.currentTime = 0.01;
       this.audio.play();
 
-      console.log(this.output);
+      console.log('trigger', this.output, this.output.actions);
 
       if (this.output.actions) {
 
