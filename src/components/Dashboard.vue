@@ -11,9 +11,9 @@
      <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
 
       <template v-for="output in outputs">
-        <switch-on-off :key="output.id" v-if="output.subtype === 'on/off'" :output="output"></switch-on-off>
-        <switch-up-down :key="output.id" v-if="output.subtype === 'up/down'" :output="output"></switch-up-down>
-        <switch-momentary :key="output.id" v-if="output.subtype === 'momentary'" :output="output"></switch-momentary>
+        <switch-on-off :key="output.id" v-if="output.subType === 'on/off'" :output="output"></switch-on-off>
+        <switch-up-down :key="output.id" v-if="output.subType === 'up/down'" :output="output"></switch-up-down>
+        <switch-momentary :key="output.id" v-if="output.subType === 'momentary'" :output="output"></switch-momentary>
       </template>
 
     </div>
