@@ -2,7 +2,7 @@ This project is pre-pre-pre-alpha, so don't expect a working solution.
 
 # Screenshots
 
-![DOMUSTO on mobile](doc/screenshots/domusto-mobile.png "DOMUSTO on Desktop")
+![DOMUSTO on mobile](doc/screenshots/domusto-mobile.png =250x "DOMUSTO on Desktop")
 
 ![DOMUSTO on Desktop](doc/screenshots/domusto-desktop.png "DOMUSTO on Desktop")
 
