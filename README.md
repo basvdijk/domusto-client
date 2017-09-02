@@ -2,10 +2,7 @@ This project is pre-pre-pre-alpha, so don't expect a working solution.
 
 # Screenshots
 
-![DOMUSTO on Desktop](doc/screenshots/domusto-desktop.png =250x250)
-
-
-![DOMUSTO on mobile](doc/screenshots/domusto-mobile.png "DOMUSTO on mobile")
+<img src="doc/screenshots/domusto-mobile.png" width="256" />   <img src="doc/screenshots/domusto-desktop.png" width="512" />
 
 # Setup
 
