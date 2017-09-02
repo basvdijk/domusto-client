@@ -1,6 +1,6 @@
-This is an interface for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
+_This project is pre-pre-pre-alpha, so don't expect a working solution._
 
-This project is pre-pre-pre-alpha, so don't expect a working solution.
+This is an interface for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
 
 # Screenshots (mobile and desktop)
 
