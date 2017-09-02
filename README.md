@@ -1,3 +1,5 @@
+Client for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
+
 This project is pre-pre-pre-alpha, so don't expect a working solution.
 
 # Screenshots (mobile and desktop)
