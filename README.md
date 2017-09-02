@@ -1,6 +1,6 @@
 This project is pre-pre-pre-alpha, so don't expect a working solution.
 
-# Screenshots
+# Screenshots (mobile and desktop)
 
 <img src="doc/screenshots/domusto-mobile.png" width="256" />   <img src="doc/screenshots/domusto-desktop.png" width="512" />
 
