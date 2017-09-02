@@ -1,4 +1,4 @@
-Client for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
+This is an interface for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
 
 This project is pre-pre-pre-alpha, so don't expect a working solution.
 
