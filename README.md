@@ -1,4 +1,10 @@
-This project is pre-pre-pre-alpha, so don't expect a working solution.
+_This project is pre-pre-pre-alpha, so don't expect a working solution._
+
+This is an interface for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
+
+# Screenshots (mobile and desktop)
+
+<img src="doc/screenshots/domusto-mobile.png" width="256" />   <img src="doc/screenshots/domusto-desktop.png" width="512" />
 
 # Setup
 
