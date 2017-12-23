@@ -1,6 +1,6 @@
 <template>
   <div class="widget widget--input">
-    <div class="widget__label" v-if="sensor.protocol.type == 'received'">
+    <div class="widget__label" v-if="sensor.protocol.type == 'received' && sensor.data.electricity.received">
       
         {{ round(sensor.data.electricity.received.actual.value, 3) }}
         {{ sensor.data.electricity.received.actual.unit }}
@@ -18,7 +18,7 @@
         </div>
       
     </div>
-    <div class="widget__label" v-if="sensor.protocol.type == 'delivered'">
+    <div class="widget__label" v-if="sensor.protocol.type == 'delivered' && sensor.data.electricity.delivered">
       
         {{ round(sensor.data.electricity.delivered.actual.value, 3) }}
         {{ sensor.data.electricity.delivered.actual.unit }}
