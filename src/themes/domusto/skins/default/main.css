@@ -25,10 +25,16 @@ body {
   color: #368bcb;
 }
 
-@keyframes fadeInOut {
+@keyframes fadeInOutText {
     0% { text-shadow: 0 0 10px yellow; color: yellow; }
     50% { text-shadow: 0 0 0 #333; color: #333; }
     100% { text-shadow: 0 0 10px yellow; color: yellow; }
+}
+
+@keyframes fadeInOutDot {
+    0%   { background-color: #00e2ff; box-shadow: 0 0 15px #00e2ff; }
+    50%  { background-color: #000000; box-shadow: 0 0 0px #000000;}
+    100% { background-color: #00e2ff; box-shadow: 0 0 15px #00e2ff;}
 }
 
 
@@ -43,16 +49,28 @@ body {
     font-size: 22px;
     color: #FFEB3B;
     text-shadow: 0 0 10px yellow;
+    height: 30px;
+    padding: 5px;
 
-    animation: fadeInOut 1s infinite;
     /* animation-iteration-count:infinite; */
     /* transition: height .5s ease; */
 }
 
-.toolbar--active {
-  height: 30px;
-    padding: 5px;
-  
+.toolbar--disconnected {
+    animation: fadeInOutText 1s infinite;
+}
+
+.toolbar--connected {
+}
+
+.connected-dot {
+    animation: fadeInOutDot 5s infinite;
+    border-radius: 10px;
+    width: 16px;
+    height: 16px;
+    background-color: #00e2ff;
+    box-shadow: 0 0 5px #00e2ff;
+    margin: 5px auto;
 }
 
 

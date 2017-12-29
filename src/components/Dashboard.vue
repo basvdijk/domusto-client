@@ -1,11 +1,15 @@
 <template>
   <div>
   
-    <header class="toolbar" v-bind:class="{ 'toolbar--active': !isConnected }">
+    <header v-if="!isConnected" class="toolbar toolbar--disconnected">
       <!-- <div class="toolbar--logo"></div> -->
-      <span v-if="!isConnected">Disconnected from DOMUSTO server</span>
+      <span>Disconnected from DOMUSTO server</span>
     </header>
   
+    <header v-if="isConnected" class="toolbar toolbar--connected">
+      <div class="connected-dot"></div>
+    </header>
+
     <div class="widgets">
   
      <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
