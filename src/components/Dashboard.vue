@@ -1,43 +1,56 @@
 <template>
   <div>
-  
-    <header v-if="!isConnected" class="toolbar toolbar--disconnected">
-      <!-- <div class="toolbar--logo"></div> -->
-      <span>Disconnected from DOMUSTO server</span>
-    </header>
-  
-    <header v-if="isConnected" class="toolbar toolbar--connected">
-      <div class="connected-dot"></div>
-    </header>
 
-    <div class="widgets">
-  
-     <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
+    <swipe class="my-swipe" :auto="0" :speed="100">
 
-      <template v-for="output in outputs">
-        <switch-on-off :key="output.id" v-if="output.subType === 'on/off'" :output="output"></switch-on-off>
-        <switch-up-down :key="output.id" v-if="output.subType === 'up/down'" :output="output"></switch-up-down>
-        <switch-momentary :key="output.id" v-if="output.subType === 'momentary'" :output="output"></switch-momentary>
-      </template>
+    <template v-for="screen in screens">
+   
+      <swipe-item>
+      
+        <header v-if="!isConnected" class="toolbar toolbar--disconnected">
+          <!-- <div class="toolbar--logo"></div> -->
+          <span>Disconnected from DOMUSTO server</span>
+        </header>
+      
+        <header v-if="isConnected" class="toolbar toolbar--connected">
+          <div class="connected-dot"></div>
+          <span>{{ screen.title }}</span>
+        </header>
 
-    </div>
+        <div class="widgets">
+      
+        <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
 
-    <div class="widgets">
+          <template v-for="output in outputs">
+            <switch-on-off :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'on/off')" :output="output"></switch-on-off>
+            <switch-up-down :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'up/down')" :output="output"></switch-up-down>
+            <switch-momentary :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'momentary')" :output="output"></switch-momentary>
+          </template>
 
-      <template v-for="input in inputs">
-        <temperature :key="input.id" v-if="input.type === 'temperature'" :sensor="input"></temperature>
-        <power :key="input.id" v-if="input.type === 'power'" :sensor="input"></power>
+        </div>
+
+        <div class="widgets">
+
+          <template v-for="input in inputs">
+            <temperature :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'temperature'" :sensor="input"></temperature>
+            <power :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'power'" :sensor="input"></power>
+          </template>
+          
+        </div>
+
+        <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
+      
+        <div class="domusto__status">
+          <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
+              <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
+      
+        </div>
+
+        </swipe-item>
+
       </template>
       
-    </div>
-
-    <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
-  
-    <div class="domusto__status">
-      <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
-          <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
-  
-    </div>
+    </swipe>
   
     <!-- <h1>outputs</h1>
       <pre>{{outputs}}</pre>
@@ -49,30 +62,29 @@
 </template>
 
 <script>
+import CONFIG from "@/config";
 
-import CONFIG from '@/config';
-
-import Temperature from '@/themes/domusto/widgets/Temperature';
-import Power from '@/themes/domusto/widgets/Power';
-import SwitchOnOff from '@/themes/domusto/widgets/Switch-on-off';
-import SwitchUpDown from '@/themes/domusto/widgets/Switch-up-down';
-import SwitchMomentary from '@/themes/domusto/widgets/Switch-momentary';
-import { outputsSet } from '@/store/actions';
+import Temperature from "@/themes/domusto/widgets/Temperature";
+import Power from "@/themes/domusto/widgets/Power";
+import SwitchOnOff from "@/themes/domusto/widgets/Switch-on-off";
+import SwitchUpDown from "@/themes/domusto/widgets/Switch-up-down";
+import SwitchMomentary from "@/themes/domusto/widgets/Switch-momentary";
+import { outputsSet } from "@/store/actions";
 
 export default {
   vuex: {
     actions: {
-      outputsSet,
+      outputsSet
     }
   },
-  name: 'dashboard',
+  name: "dashboard",
   data: () => ({
     inputDevices: null,
     // inputs: null,
     isConnected: false,
     testOutput: {
-      name: 'test',
-      state: 'on'
+      name: "test",
+      state: "on"
     }
   }),
   components: {
@@ -88,42 +100,48 @@ export default {
     },
     outputs() {
       return this.$store.state.outputs;
+    },
+    screens() {
+      return this.$store.state.screens;
     }
   },
   sockets: {
     connect() {
       // Fired when the socket connects.
-      console.log('connected');
+      console.log("connected");
       this.isConnected = true;
-
     },
 
     // Fired when the socket disconnects.
     disconnect() {
-      console.log('disconnected');
+      console.log("disconnected");
       this.isConnected = false;
     },
 
     // Fired when the server sends something on the "inputDeviceUpdate" channel.
     inputDeviceUpdate(data) {
-      console.log('input device update:', data);
-      this.$store.commit('INPUT_UPDATE', { inputData: data });
+      console.log("input device update:", data);
+      this.$store.commit("INPUT_UPDATE", { inputData: data });
     },
 
     // Fired when the server sends something on the "outputDeviceUpdate" channel.
     outputDeviceUpdate(data) {
-      console.log('output device update', data);
-      this.$store.commit('OUTPUT_UPDATE', { outputData: data });
+      console.log("output device update", data);
+      this.$store.commit("OUTPUT_UPDATE", { outputData: data });
     },
+
+    screensSet(data) {
+      console.log("screens set", data);
+      this.$store.commit("SCREENS_SET", { screens: data });
+    }
   },
 
   methods: {
     pingServer() {
       // Send the "pingServer" event to the server.
-      this.$socket.emit('pingServer', 'PING!')
+      this.$socket.emit("pingServer", "PING!");
     }
-  },
-
+  }
 };
 </script>
 

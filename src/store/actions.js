@@ -13,3 +13,7 @@ export const inputUpdate = ({ dispatch }, input) => {
 export const outputUpdate = ({ dispatch }, output) => {
   dispatch('OUTPUT_UPDATE');
 }
+
+export const screensSet = ({ dispatch }, screens) => {
+  dispatch('SCREENS_SET');
+}

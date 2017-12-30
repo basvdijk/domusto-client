@@ -1,7 +1,10 @@
+
+/* @import '../../../../../node_modules/vue-swipe/dist/vue-swipe.css'; */
 @import url('https://fonts.googleapis.com/css?family=Teko');
 @import './widget.css';
 @import './widget-switch.css';
 @import './widget-status-indicator.css';
+@import './swipe.css';
 
 html {     
     background-color: #1d1d21;
@@ -70,7 +73,9 @@ body {
     height: 16px;
     background-color: #00e2ff;
     box-shadow: 0 0 5px #00e2ff;
-    margin: 5px auto;
+    position: absolute;
+    margin-top: 6px;
+    margin-left: 5px;
 }
 
 

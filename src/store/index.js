@@ -3,7 +3,8 @@ import Vuex from 'vuex';
 
 const state = {
     inputs: {},
-    outputs: {}
+    outputs: {},
+    screens: []
 };
 
 const mutations = {
@@ -29,11 +30,16 @@ const mutations = {
     OUTPUTS_SET(state, payload) {
         state.outputs = payload.outputs
     },
+
+    SCREENS_SET(state, payload) {
+        state.screens = payload.screens;
+    },
 };
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state,
+    app,
     mutations
 });

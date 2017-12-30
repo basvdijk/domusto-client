@@ -6,6 +6,8 @@ import VueSocketIO from 'vue-socket.io';
 
 import axios from 'axios';
 
+import { Swipe, SwipeItem } from 'vue-swipe';
+
 import App from '@/components/App';
 import router from './router';
 import store from './store';
@@ -16,6 +18,9 @@ import CONFIG from '@/config';
 Vue.use(Vuex);
 Vue.use(VueSocketIO, CONFIG.server.address);
 Vue.config.productionTip = false;
+
+Vue.component('swipe', Swipe);
+Vue.component('swipe-item', SwipeItem);
 
 /* eslint-disable no-new */
 new Vue({

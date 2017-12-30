@@ -1,0 +1,63 @@
+.my-swipe {
+    height: 100vh;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    overflow: auto;
+}
+
+.mint-swipe-indicators {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+
+.slide3 {
+    background-color: #ff2d4b;
+    color: #fff;
+}
+ 
+.mint-swipe,.mint-swipe-items-wrap{
+    overflow:hidden;
+    position:relative;
+    height: 100vh;
+}
+.mint-swipe-items-wrap{
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+}
+.mint-swipe-items-wrap>div{
+    position:absolute;
+    -webkit-transform:translateX(-100%);
+    transform:translateX(-100%);
+    width:100%;
+    height:100%;
+    display:none;
+    border-right: 1px solid #111;
+}
+.mint-swipe-items-wrap>div.is-active{
+    display:block;
+    -webkit-transform:none;
+    transform:none;
+    overflow-y: auto;
+}
+.mint-swipe-indicators{
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    -webkit-transform:translateX(-50%);
+    transform:translateX(-50%);
+}
+.mint-swipe-indicator{
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    margin: 0 3px;
+}
+.mint-swipe-indicator.is-active{
+    background: yellow;
+    box-shadow: 0 0 10px yellow;
+}
