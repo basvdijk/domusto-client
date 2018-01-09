@@ -15,7 +15,7 @@ const mutations = {
 
         for (var i = 0; i < payload.inputData.length; i++) {
             let device = payload.inputData[i];
-            console.log('input update  ', device.name, device.data);
+            console.log(`update input    ${device.id} (${device.name}) ->`, device.data);
             Vue.set(state.inputs, device.id, device);
         }
 
@@ -25,7 +25,7 @@ const mutations = {
         
         for (var i = 0; i < payload.outputData.length; i++) {
             let device = payload.outputData[i];
-            console.log('output update ', device.name, device.data);
+            console.log(`update output   ${device.id} (${device.name}) ->`, device.data);
             Vue.set(state.outputs, device.id, device);
         }
 
@@ -35,7 +35,7 @@ const mutations = {
     },
 
     SCREENS_SET(state, payload) {
-        console.log('screens set   ', payload);
+        console.log('set screens    ', payload);
         state.screens = payload.screens;
     },
 };
