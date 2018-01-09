@@ -2,6 +2,7 @@ let config = {
   server: {
     address: 'http://192.168.178.72:3000',
   },
+  debug: true,
   ui: {
     theme: "domusto",
     skin: "default",
