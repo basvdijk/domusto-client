@@ -120,18 +120,15 @@ export default {
 
     // Fired when the server sends something on the "inputDeviceUpdate" channel.
     inputDeviceUpdate(data) {
-      console.log("input device update:", data);
       this.$store.commit("INPUT_UPDATE", { inputData: data });
     },
 
     // Fired when the server sends something on the "outputDeviceUpdate" channel.
     outputDeviceUpdate(data) {
-      console.log("output device update", data);
       this.$store.commit("OUTPUT_UPDATE", { outputData: data });
     },
 
     screensSet(data) {
-      console.log("screens set", data);
       this.$store.commit("SCREENS_SET", { screens: data });
     }
   },
