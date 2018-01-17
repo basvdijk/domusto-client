@@ -1,9 +1,9 @@
 <template>
   <div class="widget widget--input">
     <div class="widget__label">
-      <div v-if="sensor.data.temperature" class="widget__label--temperature">{{ round(sensor.data.temperature, 1) }} &deg;C</div>
+      <span v-if="sensor.data.temperature" class="widget__label--temperature">{{ round(sensor.data.temperature, 1) }} &deg;C</span>
   
-      <div v-if="sensor.data.humidity" class="widget__label widget__label--humidity">{{ sensor.data.humidity }}%</div>
+      <span v-if="sensor.data.humidity" class="widget__label--humidity">&nbsp;&#183;&nbsp; {{ sensor.data.humidity }}%</span>
   
       <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--red': (sensor.data.batteryLevel === 0) }"></div>
       <div class="widget__title">{{ sensor.name }}</div>
