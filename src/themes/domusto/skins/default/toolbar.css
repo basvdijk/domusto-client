@@ -1,0 +1,47 @@
+.toolbar {
+    text-align: center;
+    background: #0c0c0a;
+    height: 0;
+    border-bottom: 1px solid #333;
+    background-image: url(../../assets/images/micro-carbon.png);
+  
+        font-family: 'Teko', sans-serif;
+      font-size: 22px;
+      color: #FFEB3B;
+      text-shadow: 0 0 10px yellow;
+      height: 30px;
+      padding: 5px;
+  
+      /* animation-iteration-count:infinite; */
+      /* transition: height .5s ease; */
+  }
+  
+  .toolbar--disconnected {
+      animation: fadeInOutText 1s infinite;
+  }
+  
+  .toolbar--connected {
+  }
+  
+  .connected-dot {
+      animation: fadeInOutDot 5s infinite;
+      border-radius: 10px;
+      width: 16px;
+      height: 16px;
+      background-color: #00e2ff;
+      box-shadow: 0 0 5px #00e2ff;
+      position: absolute;
+      margin-top: 6px;
+      margin-left: 5px;
+  }
+  
+  
+  .toolbar--logo {
+    width: 100px;
+    height: 20px;
+    float: left;
+    opacity: .15;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/domusto-logo.svg);
+  }
+  

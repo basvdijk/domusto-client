@@ -1,62 +1,66 @@
 <template>
-  <div>
+  <div class="grid-container">
 
-    <swipe class="my-swipe" :auto="0" :speed="100">
+    <aside class="sidebar">
 
-    <template v-for="screen in screens">
-   
-      <swipe-item>
-      
-        <header v-if="!isConnected" class="toolbar toolbar--disconnected">
-          <!-- <div class="toolbar--logo"></div> -->
-          <span>Disconnected from DOMUSTO server</span>
-        </header>
-      
-        <header v-if="isConnected" class="toolbar toolbar--connected">
-          <div class="connected-dot"></div>
-          <span>{{ screen.title }}</span>
-        </header>
-
-        <div class="widgets">
-      
-        <!-- <switch-on-off :output="testOutput"></switch-on-off>  -->
-
-          <template v-for="output in outputs">
-            <switch-on-off :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'on/off')" :output="output"></switch-on-off>
-            <switch-up-down :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'up/down')" :output="output"></switch-up-down>
-            <switch-momentary :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'momentary')" :output="output"></switch-momentary>
-          </template>
-
-        </div>
-
-        <div class="widgets">
-
-          <template v-for="input in inputs">
-            <temperature :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'temperature'" :sensor="input"></temperature>
-            <power :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'power'" :sensor="input"></power>
-          </template>
-          
-        </div>
-
-        <!-- <switch-on-off :output="testOutput"></switch-on-off> -->
-      
-        <div class="domusto__status">
-          <!-- <p v-if="isConnected && !inputDevices">Connected to DOMUSTO server, waiting for first data</p>
-              <p v-if="isConnected && inputDevices">Connected to DOMUSTO server, receiving data</p> -->
-      
-        </div>
-
-        </swipe-item>
-
+      <template v-for="(screen, index) in screens">
+        <button v-on:click="gotoScreen(index)" class="sidebar__button" v-bind:class="{ 'sidebar__button--active': ($refs.swipe.index === index) }">
+          {{ screen.title }}
+        </button>
       </template>
-      
-    </swipe>
+
+    </aside>
+
+    <main>
+
+      <swipe ref="swipe" class="my-swipe" :auto="0" :speed="100">
+
+      <template v-for="screen in screens">
+    
+        <swipe-item>
+        
+          <header v-if="!isConnected" class="toolbar toolbar--disconnected">
+            <!-- <div class="toolbar--logo"></div> -->
+            <span>Disconnected from DOMUSTO server</span>
+          </header>
+        
+          <header v-if="isConnected" class="toolbar toolbar--connected">
+            <div class="connected-dot"></div>
+            <span>{{ screen.title }}</span>
+          </header>
+
+          <div class="widgets">
+
+            <template v-for="output in outputs">
+              <switch-on-off :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'on/off')" :output="output"></switch-on-off>
+              <switch-up-down :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'up/down')" :output="output"></switch-up-down>
+              <switch-momentary :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'momentary')" :output="output"></switch-momentary>
+            </template>
+
+          </div>
+
+          <div class="widgets">
+
+            <template v-for="input in inputs">
+              <temperature :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'temperature'" :sensor="input"></temperature>
+              <power :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'power'" :sensor="input"></power>
+            </template>
+            
+          </div>
+
+          </swipe-item>
+
+        </template>
+        
+      </swipe>
   
     <!-- <h1>outputs</h1>
       <pre>{{outputs}}</pre>
     
       <h1>inputs</h1>
       <pre>{{inputs}}</pre> -->
+
+    </main>
   
   </div>
 </template>
@@ -134,6 +138,25 @@ export default {
   },
 
   methods: {
+    gotoScreen(index) {
+
+      let diff = index - this.$refs.swipe.index;
+      let forward = true;
+
+      if (diff < 0) {
+        forward = false;
+      }
+
+      for (let i = 0; i < Math.abs(diff); i++) {
+        setTimeout(() => {
+          if (forward) {
+            this.$refs.swipe.next();
+          } else {
+            this.$refs.swipe.prev();
+          }
+        }, 300 * i);
+      }
+    },
     pingServer() {
       // Send the "pingServer" event to the server.
       this.$socket.emit("pingServer", "PING!");
