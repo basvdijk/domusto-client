@@ -6,10 +6,19 @@
     overflow: auto;
 }
 
+
 .mint-swipe-indicators {
     position: absolute;
     top: -5px;
     right: -10px;
+}
+
+@media screen and (min-width: 640px) {
+    
+    .mint-swipe-indicators {
+        display: none;
+    }
+
 }
 
 

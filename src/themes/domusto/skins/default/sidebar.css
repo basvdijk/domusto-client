@@ -10,7 +10,7 @@
         background-image: url(../../assets/images/micro-carbon.png), url(../../assets/images/domusto-logo.svg);
         background-repeat: repeat, no-repeat;
         background-position: center, bottom center;
-        background-size: auto, 70px 30px;
+        background-size: auto, 50px 20px;
         margin-top: 2px;
         border-right: 1px solid black;
     }
