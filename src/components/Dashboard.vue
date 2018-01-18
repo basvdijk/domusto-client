@@ -20,16 +20,14 @@
         <swipe-item>
         
           <header v-if="!isConnected" class="toolbar toolbar--disconnected">
-            <!-- <div class="toolbar--logo"></div> -->
             <span>Disconnected from DOMUSTO server</span>
           </header>
         
           <header v-if="isConnected" class="toolbar toolbar--connected">
-            <div class="connected-dot"></div>
             <span>{{ screen.title }}</span>
           </header>
 
-          <div class="widgets">
+          <div class="widgets" v-if="(Object.keys(outputs).filter(key => outputs[key].screens.indexOf(screen.id) > -1)).length > 0">
 
             <template v-for="output in outputs">
               <switch-on-off :key="output.id" v-if="(output.screens.indexOf(screen.id) > -1) && (output.subType === 'on/off')" :output="output"></switch-on-off>
@@ -39,7 +37,7 @@
 
           </div>
 
-          <div class="widgets">
+          <div class="widgets" v-if="(Object.keys(inputs).filter(key => inputs[key].screens.indexOf(screen.id) > -1)).length > 0">
 
             <template v-for="input in inputs">
               <temperature :key="input.id" v-if="(input.screens.indexOf(screen.id) > -1) && input.type === 'temperature'" :sensor="input"></temperature>

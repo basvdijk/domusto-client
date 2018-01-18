@@ -7,7 +7,10 @@
     .sidebar {
         display: block;
         background-color: black;
-        background-image: url(../../assets/images/micro-carbon.png);
+        background-image: url(../../assets/images/micro-carbon.png), url(../../assets/images/domusto-logo.svg);
+        background-repeat: repeat, no-repeat;
+        background-position: center, bottom center;
+        background-size: auto, 70px 30px;
         margin-top: 2px;
         border-right: 1px solid black;
     }
@@ -18,20 +21,18 @@
         height: 50px;
         width: 99px;
         background: #222;
-        border: 0;
-        
+        border: 0;       
         border-bottom: 1px solid black;
-
         font-family: 'Teko', sans-serif;
         font-size: 22px;
         color: #444;
-
         transition: color .4s, border-color .2s, text-shadow .4s;
+        overflow: hidden;
+        word-wrap: break-word;
 
     }
 
     .sidebar .sidebar__button--active {
-        border-color: yellow;
         color: #FFEB3B;
         text-shadow: 0 0 10px yellow;
         z-index: 2;
