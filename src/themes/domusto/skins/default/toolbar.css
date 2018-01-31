@@ -9,7 +9,7 @@
     color: #FFEB3B;
     text-shadow: 0 0 10px yellow;
     height: 30px;
-    padding: 5px;
+    padding: 10px 5px;
     /* animation-iteration-count:infinite; */
     /* transition: height .5s ease; */
 }
