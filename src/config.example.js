@@ -6,6 +6,7 @@ let config = {
   ui: {
     theme: "domusto",
     skin: "default",
+    batteryWarningLevel: "4", // warn when this battery level is reached
     temperatureFormat: "celcius" // celcius | fahrenheit
   }
 };
