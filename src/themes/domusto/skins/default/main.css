@@ -5,9 +5,10 @@
 @import './widget-switch.css';
 @import './widget-status-indicator.css';
 @import './toolbar.css';
-@import './sidebar.css';
+@import './nav.css';
 @import './swipe.css';
 @import './grid.css';
+@import './adaptive.css';
 
 html {     
     background-color: #1d1d21;

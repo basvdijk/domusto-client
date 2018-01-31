@@ -1,18 +1,16 @@
 <template>
-  <div class="grid-container">
 
-    <aside class="sidebar">
+  <div>
 
-      <template v-for="(screen, index) in screens">
-        <button v-on:click="gotoScreen(index)" class="sidebar__button" v-bind:class="{ 'sidebar__button--active': ($refs.swipe.index === index) }">
+    <div class="toolbar toolbar--nav toolbar--connected screen--medium">
+      <template v-if="screens" v-for="(screen, index) in screens">
+        <button v-on:click="gotoScreen(index)" class="toolbar__button" v-bind:class="{ 'toolbar__button--active': ($refs.swipe.index === index) }">
           {{ screen.title }}
         </button>
       </template>
+    </div>
 
-    </aside>
-
-    <main>
-
+     
       <swipe ref="swipe" class="my-swipe" :auto="0" :speed="100">
 
       <template v-for="screen in screens">
@@ -23,7 +21,7 @@
             <span>Disconnected from DOMUSTO server</span>
           </header>
         
-          <header v-if="isConnected" class="toolbar toolbar--connected">
+          <header v-if="isConnected" class="toolbar toolbar--connected screen--small">
             <span>{{ screen.title }}</span>
           </header>
 
@@ -51,6 +49,7 @@
         </template>
         
       </swipe>
+  </div>
   
     <!-- <h1>outputs</h1>
       <pre>{{outputs}}</pre>
@@ -58,9 +57,6 @@
       <h1>inputs</h1>
       <pre>{{inputs}}</pre> -->
 
-    </main>
-  
-  </div>
 </template>
 
 <script>
@@ -137,7 +133,6 @@ export default {
 
   methods: {
     gotoScreen(index) {
-
       let diff = index - this.$refs.swipe.index;
       let forward = true;
 
