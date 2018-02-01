@@ -45,8 +45,11 @@ export default {
     round,
 
     up: function() {
-      this.audio.currentTime = 0.01;
-      this.audio.play();
+      
+      if (CONFIG.buttonSound) {
+        this.audio.currentTime = 0.01;
+        this.audio.play();
+      }
 
       if (this.output.actions) {
 

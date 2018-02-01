@@ -35,10 +35,12 @@ export default {
   methods: {
     round,
     trigger: function () {
-           
-      this.audio.currentTime = 0.01;
-      this.audio.play();
 
+      if (CONFIG.buttonSound) {
+        this.audio.currentTime = 0.01;
+        this.audio.play();
+      }
+      
       console.log('trigger', this.output, this.output.actions);
 
       if (this.output.actions) {

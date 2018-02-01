@@ -14,16 +14,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { mapGetters } from 'vuex';
-import axios from 'axios';
-import { round } from '@/app/filters.js'
+import { mapState } from "vuex";
+import { mapGetters } from "vuex";
+import axios from "axios";
+import { round } from "@/app/filters.js";
 
-let CONFIG = require('@/config.js');
+let CONFIG = require("@/config.js");
 
 export default {
-  props: ['output'],
-  data: function () {
+  props: ["output"],
+  data: function() {
     return {
       busy: false
     };
@@ -31,39 +31,37 @@ export default {
   computed: {
     audio() {
       var audio = new Audio();
-      audio.src = require('../assets/sounds/220176_4100837-hq.mp3');
-      audio.preload = 'auto';
+      audio.src = require("../assets/sounds/220176_4100837-hq.mp3");
+      audio.preload = "auto";
       return audio;
     }
   },
   methods: {
     round,
-    toggle: function () {
-
-      this.audio.currentTime = 0.01;
-      this.audio.play();
+    toggle: function() {
+      
+      if (CONFIG.buttonSound) {
+        this.audio.currentTime = 0.01;
+        this.audio.play();
+      }
 
       if (!this.busy) {
-
-        let command = this.output.data && (this.output.data.state === 'on') ? 'off' : 'on';
+        let command =
+          this.output.data && this.output.data.state === "on" ? "off" : "on";
 
         this.busy = true;
 
         if (this.output.actions) {
-
           axios.get(this.output.actions[command]).then(response => {
             // this.output.state = response.data.state;
             this.busy = false;
           });
-
         } else {
-          console.error('no action defined for for command: ' + command);
+          console.error("no action defined for for command: " + command);
         }
-
       }
-
     }
-  },
+  }
 };
 </script>
 
