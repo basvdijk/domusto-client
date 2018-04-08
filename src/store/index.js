@@ -24,7 +24,6 @@ const mutations = {
 
     },
     OUTPUT_UPDATE(state, payload) {
-
         
         for (var i = 0; i < payload.outputData.length; i++) {
             let device = payload.outputData[i];

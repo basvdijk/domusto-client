@@ -4,6 +4,7 @@
 
   <div class="widget widget--switch" v-on:click="toggle">
     <!-- <audio ref="audio" :src="audio"></audio> -->
+    <div v-if="output.data && output.data.battery" class="widget__status-battery">{{ output.data.battery }}</div>
     <div class="widget__status-indicator" v-bind:class="{ 'widget__status-indicator--green': (output.data && output.data.state === 'on') }"></div>
     <div class="widget__timer-indicator" v-bind:class="{ 'widget__timer-indicator--enabled': output.hasTimers }"></div>
     <div class="widget__title">{{ output.name }}</div>

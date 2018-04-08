@@ -4,9 +4,12 @@
 @import './widget.css';
 @import './widget-switch.css';
 @import './widget-status-indicator.css';
+@import './widget-battery-indicator.css';
 @import './toolbar.css';
+@import './table.css';
 @import './nav.css';
 @import './swipe.css';
+@import './admin.css';
 @import './grid.css';
 @import './adaptive.css';
 
