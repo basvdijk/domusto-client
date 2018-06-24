@@ -20,6 +20,7 @@
 
     .switch-group {
         --widget-switch-width: 140px;
+        max-width: 142px;
     }
 
     .widget--switch {
@@ -93,7 +94,7 @@ overflow: hidden;
 } */
 
 .widget--switch:active { 
-    border-width: 5px;
+    border-width: 3px;
     width: calc(var(--widget-switch-width) - 2px);
     height: calc(var(--widget-switch-height) - 2px);
     box-shadow: 2px 2px 2px #52525a; 

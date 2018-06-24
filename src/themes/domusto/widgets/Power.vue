@@ -3,10 +3,10 @@
 
     <div class="widget__label">
       
-        {{ round(sensor.data.actual.value, 3) }}
-        {{ sensor.data.actual.unit }}
+        <span class="widget__label--power">{{ sensor.data.actual.value * 1000 }} W</span>
+        <!-- {{ sensor.data.actual.unit }} -->
       
-        <div>
+        <div style="    position: absolute;   top: 0;">
       
           {{ round(sensor.data.tariff1.value, 0) }}
           {{ sensor.data.tariff1.unit }}
