@@ -24,7 +24,7 @@ const mutations = {
 
     },
     OUTPUT_UPDATE(state, payload) {
-        
+
         for (var i = 0; i < payload.outputData.length; i++) {
             let device = payload.outputData[i];
             if (CONFIG.debug) {
@@ -51,5 +51,5 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state,
     app,
-    mutations
+    mutations,
 });
