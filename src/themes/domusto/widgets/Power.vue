@@ -3,17 +3,17 @@
 
     <div class="widget__label">
       
-        <span class="widget__label--power">{{ sensor.data.actual.value * 1000 }} W</span>
+        <span class="widget__label--power">{{ round(sensor.data.actual.value * 1000).toLocaleString('nl') }} W</span>
         <!-- {{ sensor.data.actual.unit }} -->
       
         <div style="    position: absolute;   top: 0;">
       
-          {{ round(sensor.data.tariff1.value, 0) }}
+          {{ round(sensor.data.tariff1.value, 0).toLocaleString('nl') }}
           {{ sensor.data.tariff1.unit }}
         
           /
         
-          {{ round(sensor.data.tariff2.value, 0) }}
+          {{ round(sensor.data.tariff2.value, 0).toLocaleString('nl') }}
           {{ sensor.data.tariff2.unit }}
 
         </div>
