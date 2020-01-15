@@ -1,6 +1,11 @@
-_This project is pre-pre-pre-alpha, so don't expect a working solution._
+DOMUSTO website: https://domusto.com/
 
-This is an interface for the DOMUSTO home automation server https://github.com/basvdijk/domusto-server-nodejs
+⚠️ _This project in alpha-state, so things might not work as expected._ ⚠️
+
+# Introduction
+DOMUSTO is versatile, extensible, plugin driven home automation software written in NodeJS. DOMUSTO is developed to run on a Raspberry Pi, but other Linux based systems should work as well.
+
+This project is a web interface for the [DOMUSTO home automation server](https://github.com/basvdijk/domusto-server-nodejs)
 
 # Screenshots (mobile and desktop)
 
