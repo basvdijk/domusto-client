@@ -1,0 +1,8 @@
+.widget__status-battery {
+    position: absolute;
+    top: 2px;
+    left: 15px;
+
+    font-size: 10px;
+    font-family: arial;
+}

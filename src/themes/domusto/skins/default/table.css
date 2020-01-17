@@ -1,0 +1,17 @@
+.data-table {
+    margin: 0 auto;
+    border: 1px solid #eee;
+    color: #666;
+    background-color: #EFEFEF;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.data-table td {
+    padding: 2px 5px;
+    border: 1px solid #CCC;
+}
+
+.data-table tr:nth-child(odd) {
+    background-color: #e8e6e0;
+}

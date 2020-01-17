@@ -1,0 +1,58 @@
+.toolbar {
+    text-align: center;
+    background: #0c0c0a;
+    height: 0;
+    border-bottom: 1px solid #333;
+    background-image: url(../../assets/images/micro-carbon.png);
+    font-family: 'Teko', sans-serif;
+    font-size: 22px;
+    color: #FFEB3B;
+    text-shadow: 0 0 10px yellow;
+    height: 30px;
+    padding: 10px 5px;
+    /* animation-iteration-count:infinite; */
+    /* transition: height .5s ease; */
+}
+
+.toolbar--disconnected {
+    color: red;
+    animation: fadeInOutText 1s infinite, fadeInOutBorderBottom 1s infinite;
+}
+
+.toolbar--connected {}
+
+.toolbar--logo {
+    width: 100px;
+    height: 20px;
+    float: left;
+    opacity: .15;
+    background-repeat: no-repeat;
+    background-image: url(../../assets/images/domusto-logo.svg);
+}
+
+@keyframes fadeInOutText {
+    0% {
+        text-shadow: 0 0 10px red;
+        color: red;
+    }
+    50% {
+        text-shadow: 0 0 0 #333;
+        color: #333;
+    }
+    100% {
+        text-shadow: 0 0 10px red;
+        color: red;
+    }
+}
+
+@keyframes fadeInOutBorderBottom {
+    0% {
+        border-bottom: 2px solid red
+    }
+    50% {
+        border-bottom: 2px solid #333
+    }
+    100% {
+        border-bottom: 2px solid red;
+    }
+}

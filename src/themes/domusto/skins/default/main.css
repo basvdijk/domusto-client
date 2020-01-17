@@ -1,0 +1,37 @@
+
+/* @import '../../../../../node_modules/vue-swipe/dist/vue-swipe.css'; */
+@import url('https://fonts.googleapis.com/css?family=Teko');
+@import './widget.css';
+@import './widget-switch.css';
+@import './widget-status-indicator.css';
+@import './widget-battery-indicator.css';
+@import './toolbar.css';
+@import './table.css';
+@import './nav.css';
+@import './swipe.css';
+@import './admin.css';
+@import './grid.css';
+@import './adaptive.css';
+
+html {     
+    background-color: #1d1d21;
+    background-image: url(../../assets/images/micro-carbon.png);
+    
+    /* Disable highlighting when tapped */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #368bcb;
+}

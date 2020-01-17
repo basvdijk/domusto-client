@@ -1,0 +1,13 @@
+
+.screen--small {
+    display: medium;
+}
+
+@media screen and (min-width: 320px) {
+    .screen--small {
+        display: none;
+    }
+    .screen--medium {
+        display: block;
+    }
+}
