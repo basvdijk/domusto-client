@@ -19,8 +19,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-import { mapGetters } from 'vuex';
 import axios from 'axios';
 import { round } from '@/app/filters.js'
 
@@ -55,7 +53,7 @@ export default {
 
       // console.log(this.output.actions['off']);
 
-        axios.get(this.output.actions['off']).then(response => {
+        axios.get(this.output.actions['off']).then(() => {
         });
       }
 
@@ -70,7 +68,7 @@ export default {
       if (this.output.actions) {
 
               // console.log(this.output.actions['on']);
-        axios.get(this.output.actions['on']).then(response => {
+        axios.get(this.output.actions['on']).then(() => {
         });
       }
 

@@ -2,9 +2,9 @@
 
   <div>
 
-    <div class="toolbar toolbar--nav toolbar--connected screen--medium">
-      <template v-if="screens" v-for="(screen, index) in screens">
-        <button v-on:click="gotoScreen(index)" class="toolbar__button" v-bind:class="{ 'toolbar__button--active': ($refs.swipe.index === index) }">
+    <div v-if="screens" class="toolbar toolbar--nav toolbar--connected screen--medium">
+      <template v-for="(screen, index) in screens">
+        <button v-bind:key="index" v-on:click="gotoScreen(index)" class="toolbar__button" v-bind:class="{ 'toolbar__button--active': ($refs.swipe.index === index) }">
           {{ screen.title }}
         </button>
       </template>
@@ -14,8 +14,8 @@
       <swipe ref="swipe" class="my-swipe" :auto="0" :speed="100">
 
       <template v-for="screen in screens">
-    
-        <swipe-item>
+
+        <swipe-item v-bind:key="screen.id">
         
           <header v-if="!isConnected" class="toolbar toolbar--disconnected">
             <span>Disconnected from DOMUSTO server</span>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import CONFIG from "@/config";
+// import CONFIG from "@/config";
 
 import Temperature from "@/themes/domusto/widgets/Temperature";
 import Power from "@/themes/domusto/widgets/Power";

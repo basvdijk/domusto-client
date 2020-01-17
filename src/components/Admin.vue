@@ -55,7 +55,7 @@
         </tr>
 
         <template v-for="deviceClass in device.classes">
-            <tr>
+            <tr v-bind:key="deviceClass[0].node_id">
                 <td>{{ deviceClass[0].node_id }}</td>
                 <td>({{ deviceClass[0].class_id }}) {{ zwaveClass(deviceClass[0].class_id) }}</td>
                 <td>{{ deviceClass[0].value_id }}</td>
@@ -86,7 +86,7 @@
         <template v-for="output in outputs">
             <!-- {{ output }} -->
 
-            <tr>
+            <tr v-bind:key="output.id">
                 <td>{{ output.name }}</td>
                 <td>{{ output.id }}</td>
                 <td>{{ output.type }}</td>
@@ -102,7 +102,7 @@
         <template v-for="input in inputs">
             <!-- {{ input }} -->
 
-            <tr>
+            <tr v-bind:key="input.id">
                 <td>{{ input.name }}</td>
                 <td>{{ input.id }}</td>
                 <td>{{ input.type }}</td>
@@ -135,15 +135,9 @@
 </template>
 
 <script>
-import CONFIG from "@/config";
 import ZWAVECLASSES from "@/zwave-classes";
 import axios from "axios";
 
-import Temperature from "@/themes/domusto/widgets/Temperature";
-import Power from "@/themes/domusto/widgets/Power";
-import SwitchOnOff from "@/themes/domusto/widgets/Switch-on-off";
-import SwitchUpDown from "@/themes/domusto/widgets/Switch-up-down";
-import SwitchMomentary from "@/themes/domusto/widgets/Switch-momentary";
 import { outputsSet } from "@/store/actions";
 
 export default {
@@ -167,16 +161,6 @@ export default {
       return ZWAVECLASSES["class" + classId];
     }
   }),
-  components: {
-    Temperature,
-    Power,
-    SwitchOnOff,
-    SwitchUpDown,
-    SwitchMomentary
-  },
-  methods: {
-    
-  },
   computed: {
     inputs() {
       return this.$store.state.inputs;
@@ -210,8 +194,8 @@ export default {
 
       this.device = data.device;
 
-      if (data.type === "newDevice") {
-      }
+      // if (data.type === "newDevice") {
+      // }
     },
 
     // Fired when the server sends something on the "inputDeviceUpdate" channel.

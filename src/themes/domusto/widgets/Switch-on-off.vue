@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { mapGetters } from "vuex";
 import axios from "axios";
 import { round } from "@/app/filters.js";
 
@@ -53,7 +51,7 @@ export default {
         this.busy = true;
 
         if (this.output.actions) {
-          axios.get(this.output.actions[command]).then(response => {
+          axios.get(this.output.actions[command]).then(() => {
             // this.output.state = response.data.state;
             this.busy = false;
           });

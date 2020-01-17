@@ -26,7 +26,6 @@
 
 <script>
 import { round } from '@/app/filters.js'
-const CONFIG = require('@/config');
 
 export default {
   props: ['sensor'],
